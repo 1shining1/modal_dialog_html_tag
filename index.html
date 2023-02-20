@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Modal with dailog tag</title>
+    </head>
+    <body>
+        <!-- scroll 해도 모달창은 가운데 위치함! -->
+        <style>
+            body {
+                height: 1500px;
+            }
+            button {
+                padding: 15px 30px;
+                background-color: rgb(255, 221, 2);
+                border: 0;
+                border-radius: 10px;
+                font-size: 20px;
+            }
+
+            dialog {
+                padding: 30px;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                    0 10px 10px rgba(0, 0, 0, 0.25);
+            }
+
+            /* dialog 나타날때 백그라운드 컬러 지정 */
+            dialog::backdrop {
+                background-color: tomato;
+            }
+
+            dialog p {
+                margin-bottom: 30px;
+            }
+        </style>
+        <button>Show me modal</button>
+        <dialog>
+            <p>Hello! I'm a modal!</p>
+            <form method="dialog">
+                <button value="close">Close</button>
+                <button value="confirm">Confirm</button>
+            </form>
+        </dialog>
+
+        <script>
+            const button = document.querySelector("button");
+            const dialog = document.querySelector("dialog");
+
+            button.addEventListener("click", () => {
+                dialog.showModal();
+            });
+
+            dialog.addEventListener("close", () => {
+                // 어느 버튼이 눌린건지 console에서 확인
+                console.log(dialog.returnValue);
+            });
+        </script>
+    </body>
+</html>
